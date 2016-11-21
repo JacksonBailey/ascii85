@@ -1,10 +1,13 @@
-package com.github.fzakaria.ascii85;
+package com.equifax.ifs.ascii85;
 
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.*;
+
+import com.equifax.ifs.ascii85.Ascii85;
+
 import static org.hamcrest.CoreMatchers.is;
 /**
  * A simple test class for {@link Ascii85}

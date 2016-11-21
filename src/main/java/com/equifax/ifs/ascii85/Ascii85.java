@@ -1,4 +1,4 @@
-package com.github.fzakaria.ascii85;
+package com.equifax.ifs.ascii85;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
