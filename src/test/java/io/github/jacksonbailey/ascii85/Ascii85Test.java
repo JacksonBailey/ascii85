@@ -11,6 +11,10 @@ import org.junit.Test;
  */
 public class Ascii85Test {
 
+  private static final String SAMPLE_TEXT = "Man is distinguished, not only by his reason, but by "
+      + "this singular passion from other animals, which is a lust of the mind, that by a "
+      + "perseverance of delight in the continued and indefatigable generation of knowledge, "
+      + "exceeds the short vehemence of any carnal pleasure.";
 
   @Test(expected = IllegalArgumentException.class)
   public void basicIllegalArgumentTest() {
@@ -26,11 +30,8 @@ public class Ascii85Test {
             + "l(DId<j@<?3r@:F%a+D58'ATD4$Bl@l3De:,-DJs`8ARoFb/0JMK@qB4^F!,R<AKZ&-DfTqBG%G"
             + ">uD.RTpAKYo'+CT/5+Cei#DII?(E,9)oF*2M7/c";
 
-    String solution =
-        "Man is distinguished, not only by his reason, but by this singular passion from other animals, "
-            + "which is a lust of the mind, that by a perseverance of delight in the continued and indefatigable generation "
-            + "of knowledge, exceeds the short vehemence of any carnal pleasure.";
-    assertThat(solution, is(new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII)));
+    assertThat(SAMPLE_TEXT,
+        is(new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII)));
   }
 
   @Test
@@ -42,11 +43,7 @@ public class Ascii85Test {
             + "l(DId<j@<?3r@:F%a+D58'ATD4$Bl@l3De:,-DJs`8ARoFb/0JMK@qB4^F!,R<AKZ&-DfTqBG%G\n"
             + ">uD.RTpAKYo'+CT/5+Cei#DII?(E,9)oF*2M7/c";
 
-    String solution =
-        "Man is distinguished, not only by his reason, but by this singular passion from other animals, "
-            + "which is a lust of the mind, that by a perseverance of delight in the continued and indefatigable generation "
-            + "of knowledge, exceeds the short vehemence of any carnal pleasure.";
-    assertThat("we should ignore whitespace", solution,
+    assertThat("we should ignore whitespace", SAMPLE_TEXT,
         is(new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII)));
   }
 
@@ -59,11 +56,7 @@ public class Ascii85Test {
             + "l(DId<j@<?3r@:F%a+D58'ATD4$Bl@l3De:,-DJs`8ARoFb/0JMK@qB4^F!,R<AKZ&-DfTqBG%G\n"
             + ">uD.RTpAKYo'+CT/5+Cei#DII?(E,9)oF*2M7/c";
 
-    String solution =
-        "Man is distinguished, not only by his reason, but by this singular passion from other animals, "
-            + "which is a lust of the mind, that by a perseverance of delight in the continued and indefatigable generation "
-            + "of knowledge, exceeds the short vehemence of any carnal pleasure.";
-    assertThat("we should ignore whitespace", solution,
+    assertThat("we should ignore whitespace", SAMPLE_TEXT,
         is(new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII)));
   }
 
@@ -75,11 +68,7 @@ public class Ascii85Test {
         + "l(DId<j@<?3r@:F%a+D58'ATD4$Bl@l3De:,-DJs`8ARoFb/0JMK@qB4^F!,R<AKZ&-DfTqBG%G"
         + ">uD.RTpAKYo'+CT/5+Cei#DII?(E,9)oF*2M7/c";
 
-    String decodedString =
-        "Man is distinguished, not only by his reason, but by this singular passion from other animals, "
-            + "which is a lust of the mind, that by a perseverance of delight in the continued and indefatigable generation "
-            + "of knowledge, exceeds the short vehemence of any carnal pleasure.";
-    assertThat(solution, is(Ascii85.encode(decodedString.getBytes())));
+    assertThat(solution, is(Ascii85.encode(SAMPLE_TEXT.getBytes())));
   }
 
 }
