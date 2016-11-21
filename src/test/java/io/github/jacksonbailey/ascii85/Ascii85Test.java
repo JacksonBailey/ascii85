@@ -1,7 +1,6 @@
 package io.github.jacksonbailey.ascii85;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.nio.charset.StandardCharsets;
 import org.junit.Test;
@@ -30,8 +29,7 @@ public class Ascii85Test {
             + "l(DId<j@<?3r@:F%a+D58'ATD4$Bl@l3De:,-DJs`8ARoFb/0JMK@qB4^F!,R<AKZ&-DfTqBG%G"
             + ">uD.RTpAKYo'+CT/5+Cei#DII?(E,9)oF*2M7/c";
 
-    assertThat(SAMPLE_TEXT,
-        is(new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII)));
+    assertEquals(SAMPLE_TEXT, new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII));
   }
 
   @Test
@@ -43,8 +41,7 @@ public class Ascii85Test {
             + "l(DId<j@<?3r@:F%a+D58'ATD4$Bl@l3De:,-DJs`8ARoFb/0JMK@qB4^F!,R<AKZ&-DfTqBG%G\n"
             + ">uD.RTpAKYo'+CT/5+Cei#DII?(E,9)oF*2M7/c";
 
-    assertThat("we should ignore whitespace", SAMPLE_TEXT,
-        is(new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII)));
+    assertEquals(SAMPLE_TEXT, new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII));
   }
 
   @Test
@@ -56,8 +53,7 @@ public class Ascii85Test {
             + "l(DId<j@<?3r@:F%a+D58'ATD4$Bl@l3De:,-DJs`8ARoFb/0JMK@qB4^F!,R<AKZ&-DfTqBG%G\n"
             + ">uD.RTpAKYo'+CT/5+Cei#DII?(E,9)oF*2M7/c";
 
-    assertThat("we should ignore whitespace", SAMPLE_TEXT,
-        is(new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII)));
+    assertEquals(SAMPLE_TEXT, new String(Ascii85.decode(encodedString), StandardCharsets.US_ASCII));
   }
 
   @Test
@@ -68,7 +64,7 @@ public class Ascii85Test {
         + "l(DId<j@<?3r@:F%a+D58'ATD4$Bl@l3De:,-DJs`8ARoFb/0JMK@qB4^F!,R<AKZ&-DfTqBG%G"
         + ">uD.RTpAKYo'+CT/5+Cei#DII?(E,9)oF*2M7/c";
 
-    assertThat(solution, is(Ascii85.encode(SAMPLE_TEXT.getBytes())));
+    assertEquals(solution, Ascii85.encode(SAMPLE_TEXT.getBytes()));
   }
 
 }
