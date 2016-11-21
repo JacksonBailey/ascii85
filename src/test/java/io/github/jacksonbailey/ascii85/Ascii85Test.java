@@ -16,12 +16,27 @@ public class Ascii85Test {
       + "exceeds the short vehemence of any carnal pleasure.";
 
   @Test(expected = IllegalArgumentException.class)
-  public void basicIllegalArgumentTest() {
+  public void decodeShouldFailOnNullInput() {
     Ascii85.decode(null);
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void decodeShouldFailOnEmptyInput() {
+    Ascii85.decode("");
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void encodeShouldFailOnNullInput() {
+    Ascii85.encode(null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void encodeShouldFailOnEmptyInput() {
+    Ascii85.encode(new byte[0]);
+  }
+
   @Test
-  public void basicWikiDecodeTest() {
+  public void basicDecodeTest() {
     String encodedString =
         "9jqo^BlbD-BleB1DJ+*+F(f,q/0JhKF<GL>Cj@.4Gp$d7F!,L7@<6@)/0JDEF<G%<+EV:2F!,"
             + "O<DJ+*.@<*K0@<6L(Df-\\0Ec5e;DffZ(EZee.Bl.9pF\"AGXBPCsi+DGm>@3BB/F*&OCAfu2/AKY"
@@ -33,7 +48,7 @@ public class Ascii85Test {
   }
 
   @Test
-  public void basicWikiDecodeNewLinesTest() {
+  public void decodeShouldIgnoreNewLineCharacter() {
     String encodedString =
         "9jqo^BlbD-BleB1DJ+*+F(f,q/0JhKF<GL>Cj@.4Gp$d7F!,L7@<6@)/0JDEF<G%<+EV:2F!,\n"
             + "O<DJ+*.@<*K0@<6L(Df-\\0Ec5e;DffZ(EZee.Bl.9pF\"AGXBPCsi+DGm>@3BB/F*&OCAfu2/AKY\n"
@@ -45,7 +60,7 @@ public class Ascii85Test {
   }
 
   @Test
-  public void basicWikiDecodeIgnoreSpacesTest() {
+  public void decodeShouldIgnoreSpaceCharacter() {
     String encodedString =
         "9jqo^BlbD-BleB1DJ+*+F    (f,q/0JhKF<GL>Cj@.4Gp$d7F!,L7@<6@)/0JDEF<G%<+EV:2F!,\n"
             + "O<DJ+*.@<*K0@<6L(Df-\\0Ec5e;DffZ(EZee.  Bl.9pF\"AGXBPCsi+DGm>@3BB/F*&OCAfu2/AKY\n"
@@ -57,7 +72,7 @@ public class Ascii85Test {
   }
 
   @Test
-  public void basicWikiEncodeTest() {
+  public void basicEncodeTest() {
     String solution = "9jqo^BlbD-BleB1DJ+*+F(f,q/0JhKF<GL>Cj@.4Gp$d7F!,L7@<6@)/0JDEF<G%<+EV:2F!,"
         + "O<DJ+*.@<*K0@<6L(Df-\\0Ec5e;DffZ(EZee.Bl.9pF\"AGXBPCsi+DGm>@3BB/F*&OCAfu2/AKY"
         + "i(DIb:@FD,*)+C]U=@3BN#EcYf8ATD3s@q?d$AftVqCh[NqF<G:8+EV:.+Cf>-FD5W8ARlolDIa"
