@@ -1,4 +1,4 @@
-package com.equifax.ifs.ascii85;
+package io.github.jacksonbailey.ascii85;
 
 import org.junit.Test;
 
@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.*;
 
-import com.equifax.ifs.ascii85.Ascii85;
+import io.github.jacksonbailey.ascii85.Ascii85;
 
 import static org.hamcrest.CoreMatchers.is;
 /**

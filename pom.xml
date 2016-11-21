@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.equifax.ifs</groupId>
+    <groupId>io.github.jacksonbailey</groupId>
     <artifactId>ascii85</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Ascii85 Codec</name>
-    <url>https://github.com/fzakaria/ascii85</url>
+    <url>https://github.com/JacksonBailey/ascii85</url>
 
     <dependencies>
         <dependency>
