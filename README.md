@@ -39,3 +39,5 @@ There are some included test cases that use the example given in the wiki link a
 Copyright © 2016 Farid Zakaria
 
 Distributed under the Eclipse Public License
+
+Modifications by Jackson Bailey (© 2016)
