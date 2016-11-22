@@ -110,7 +110,8 @@ public class Ascii85 {
       // compression, and an all-zero group is encoded as a single character "z" instead of "!!!!!".
       if (currByte == 'z') {
         if (chunkIndex > 0) {
-          throw new IllegalArgumentException("The payload is not base 85 encoded.");
+          String message = "Improper Ascii85, unexpected 'z' compression found at index %s in the paylod %s";
+          throw new IllegalArgumentException(String.format(message, i, chars));
         }
         chunk[chunkIndex++] = '!';
         chunk[chunkIndex++] = '!';

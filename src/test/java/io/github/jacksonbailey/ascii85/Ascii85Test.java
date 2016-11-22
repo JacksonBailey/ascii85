@@ -85,6 +85,11 @@ public class Ascii85Test {
     assertArrayEquals(new byte[] {0x0, 0x0, 0x0, 0x0}, output);
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void improperZeroChunkDecode() {
+    Ascii85.decode("!z");
+  }
+
   @Test
   public void decodeShouldIgnoreNewLineCharacter() {
     String input = "!\n!\n!\n!\n\n\n&\n\n\n";
