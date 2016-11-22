@@ -1,5 +1,6 @@
 package io.github.jacksonbailey.ascii85;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import java.nio.charset.StandardCharsets;
@@ -33,6 +34,24 @@ public class Ascii85Test {
   @Test(expected = IllegalArgumentException.class)
   public void encodeShouldFailOnEmptyInput() {
     Ascii85.encode(new byte[0]);
+  }
+
+  @Test
+  public void fullChunkEncode() {
+    byte[] input = new byte[] {0x0, 0x0, 0x0, 0x2};
+
+    String output = Ascii85.encode(input);
+
+    assertEquals("!!!!#", output);
+  }
+
+  @Test
+  public void fullChunkDecode() {
+    String input = "!!!!&";
+
+    byte[] output = Ascii85.decode(input);
+
+    assertArrayEquals(new byte[] {0x0, 0x0, 0x0, 0x5}, output);
   }
 
   @Test
