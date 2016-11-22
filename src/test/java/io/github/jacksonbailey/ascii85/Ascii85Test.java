@@ -161,11 +161,6 @@ public class Ascii85Test {
     assertEquals(encoded, output);
   }
 
-  @Test
-  public void failingTest() {
-    org.junit.Assert.fail();
-  }
-
   private static byte[] asciiBytesFromString(String s) {
     return s.getBytes(StandardCharsets.US_ASCII);
   }
