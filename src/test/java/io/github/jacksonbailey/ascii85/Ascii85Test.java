@@ -55,6 +55,24 @@ public class Ascii85Test {
   }
 
   @Test
+  public void allZeroChunkEncode() {
+    byte[] input = new byte[] {0x0, 0x0, 0x0, 0x0};
+
+    String output = Ascii85.encode(input);
+
+    assertEquals("z", output);
+  }
+
+  @Test
+  public void allZeroChunkDecode() {
+    String input = "z";
+
+    byte[] output = Ascii85.decode(input);
+
+    assertArrayEquals(new byte[] {0x0, 0x0, 0x0, 0x0}, output);
+  }
+
+  @Test
   public void decodeShouldIgnoreNewLineCharacter() {
     String encodedString =
         "9jqo^BlbD-BleB1DJ+*+F(f,q/0JhKF<GL>Cj@.4Gp$d7F!,L7@<6@)/0JDEF<G%<+EV:2F!,\n"

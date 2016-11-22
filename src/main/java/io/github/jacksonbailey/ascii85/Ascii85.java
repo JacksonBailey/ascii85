@@ -92,8 +92,10 @@ public class Ascii85 {
       throw new IllegalArgumentException("You must provide a non-zero length input");
     }
     // By using five ASCII characters to represent four bytes of binary data the encoded size ¹⁄₄ is
-    // larger than the original
-    ByteBuffer bytebuff = ByteBuffer.allocate((chars.length() * 4 / 5));
+    // larger than the original. Each 'z' counts as five chars due to compression while encoding.
+    int uncompressedSize = chars.chars().map(c -> c == 'z' ? 5 : 1).sum();
+    int bufferSize = (uncompressedSize * 4 / 5);
+    ByteBuffer bytebuff = ByteBuffer.allocate(bufferSize);
     // 1. Whitespace characters may occur anywhere to accommodate line length limitations. So lets
     // strip it.
     chars = REMOVE_WHITESPACE.matcher(chars).replaceAll("");
