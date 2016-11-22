@@ -86,6 +86,15 @@ public class Ascii85Test {
   }
 
   @Test
+  public void decodeShouldIgnoreTabCharacter() {
+    String input = "\t\t\t\t\t\t!!!\t!&";
+
+    byte[] output = Ascii85.decode(input);
+
+    assertArrayEquals(new byte[] {0x0, 0x0, 0x0, 0x5}, output);
+  }
+
+  @Test
   public void decodeParagraphTest() {
 
     String encoded = "9jqo^BlbD-BleB1DJ+*+F(f,q/0JhKF<GL>Cj@.4Gp$d7F!,L7@<6@)/0JDEF<G%<+EV:2F!,O<DJ"
