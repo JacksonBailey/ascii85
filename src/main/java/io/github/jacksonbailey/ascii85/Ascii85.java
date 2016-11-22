@@ -110,7 +110,7 @@ public class Ascii85 {
       // compression, and an all-zero group is encoded as a single character "z" instead of "!!!!!".
       if (currByte == 'z') {
         if (chunkIndex > 0) {
-          String message = "Improper Ascii85, unexpected 'z' compression found at index %s in the paylod %s";
+          String message = "Bad Ascii85, unexpected 'z' compression at index %s in payload %s";
           throw new IllegalArgumentException(String.format(message, i, chars));
         }
         chunk[chunkIndex++] = '!';
@@ -119,6 +119,10 @@ public class Ascii85 {
         chunk[chunkIndex++] = '!';
         chunk[chunkIndex++] = '!';
       } else {
+        if (currByte < '!' || currByte > 'u') {
+          String message = "Bad Ascii85, char '%c' in payload %s, only '!' - 'u' & 'z' allowed.";
+          throw new IllegalArgumentException(String.format(message, currByte, chars));
+        }
         chunk[chunkIndex++] = currByte;
       }
 
