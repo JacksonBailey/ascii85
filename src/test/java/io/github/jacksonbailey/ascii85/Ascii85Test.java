@@ -22,6 +22,11 @@ public class Ascii85Test {
   }
 
   @Test(expected = IllegalArgumentException.class)
+  public void decodeShouldFailOnInputWithOutOfBoundsCharacters() {
+    Ascii85.decode("!!!!v");
+  }
+
+  @Test(expected = IllegalArgumentException.class)
   public void encodeShouldFailOnNullInput() {
     Ascii85.encode(null);
   }
