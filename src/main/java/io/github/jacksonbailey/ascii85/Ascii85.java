@@ -80,7 +80,7 @@ public class Ascii85 {
   }
 
   /**
-   * This is a very simple base85 decoder. It respects the 'z' optimization for empty chunks, &
+   * This is a very simple base85 decoder. It respects the 'z' optimization for empty chunks, &amp;
    * strips whitespace between characters to respect line limits.
    *
    * @see <a href="https://en.wikipedia.org/wiki/Ascii85">Ascii85</a>
