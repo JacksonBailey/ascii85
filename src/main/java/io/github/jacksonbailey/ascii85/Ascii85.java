@@ -84,21 +84,22 @@ public class Ascii85 {
    * strips whitespace between characters to respect line limits.
    *
    * @see <a href="https://en.wikipedia.org/wiki/Ascii85">Ascii85</a>
-   * @param chars The input characters that are base85 encoded.
+   * @param input The input characters that are base85 encoded.
    * @return The binary data decoded from the input
    */
-  public static byte[] decode(String chars) {
-    if (chars == null || chars.length() == 0) {
+  public static byte[] decode(String input) {
+    if (input == null || input.length() == 0) {
       throw new IllegalArgumentException("You must provide a non-zero length input");
     }
+    // Whitespace characters must be ignored, so remove them.
+    String chars = REMOVE_WHITESPACE.matcher(input).replaceAll("");
+
     // By using five ASCII characters to represent four bytes of binary data the encoded size ¹⁄₄ is
     // larger than the original. Each 'z' counts as five chars due to compression while encoding.
     int uncompressedSize = chars.chars().map(c -> c == 'z' ? 5 : 1).sum();
     int bufferSize = (uncompressedSize * 4 / 5);
     ByteBuffer bytebuff = ByteBuffer.allocate(bufferSize);
-    // 1. Whitespace characters may occur anywhere to accommodate line length limitations. So lets
-    // strip it.
-    chars = REMOVE_WHITESPACE.matcher(chars).replaceAll("");
+
     // Since Base85 is an ascii encoder, we don't need to get the bytes as UTF-8.
     byte[] payload = chars.getBytes(StandardCharsets.US_ASCII);
     byte[] chunk = new byte[5];
