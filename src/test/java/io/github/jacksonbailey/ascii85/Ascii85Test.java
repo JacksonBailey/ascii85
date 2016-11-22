@@ -50,6 +50,24 @@ public class Ascii85Test {
   }
 
   @Test
+  public void partialChunkEncode() {
+    byte[] input = new byte[] {0x0, 0x0, 0x5};
+
+    String output = Ascii85.encode(input);
+
+    assertEquals("!!!0", output);
+  }
+
+  @Test
+  public void partialChunkDecode() {
+    String input = "!!!0";
+
+    byte[] output = Ascii85.decode(input);
+
+    assertArrayEquals(new byte[] {0x0, 0x0, 0x5}, output);
+  }
+
+  @Test
   public void allZeroChunkEncode() {
     byte[] input = new byte[] {0x0, 0x0, 0x0, 0x0};
 
