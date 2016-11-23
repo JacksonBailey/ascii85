@@ -13,7 +13,33 @@
   </properties>
 
   <name>Ascii85 Codec</name>
+  <description>Provides methods for encoding bytes to and decoding strings from the Ascii85 format.</description>
   <url>https://github.com/JacksonBailey/ascii85</url>
+
+  <licenses>
+    <license>
+      <name>Eclipse Public License, Version 1.0</name>
+      <url>http://www.eclipse.org/org/documents/epl-v10.html</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Jackson Bailey</name>
+      <email>jackson.robert.bailey@gmail.com</email>
+      <url>https://jacksonbailey.github.io/</url>
+    </developer>
+    <developer>
+      <name>Farid Zakaria</name>
+      <url>http://fzakaria.com</url>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:https://github.com/JacksonBailey/ascii85.git</connection>
+    <developerConnection>scm:git:https://github.com/JacksonBailey/ascii85.git</developerConnection>
+    <url>https://github.com/JacksonBailey/ascii85</url>
+  </scm>
 
   <dependencies>
     <dependency>
